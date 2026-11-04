@@ -11,6 +11,11 @@ const envSchema = z.object({
     .enum(["development", "staging", "production"])
     .default("development"),
   VITE_USE_MOCK: z.string().optional().default("false"),
+  VITE_PUBLIC_REGISTRATION_URL: z
+    .string()
+    .url()
+    .optional()
+    .default("https://cricket.jeffscorporatecatering.com"),
   DEV: z.boolean().default(false),
   PROD: z.boolean().default(false),
 });
@@ -21,6 +26,7 @@ const parsed = envSchema.safeParse({
   VITE_APP_NAME: import.meta.env.VITE_APP_NAME,
   VITE_APP_ENV: import.meta.env.VITE_APP_ENV,
   VITE_USE_MOCK: import.meta.env.VITE_USE_MOCK,
+  VITE_PUBLIC_REGISTRATION_URL: import.meta.env.VITE_PUBLIC_REGISTRATION_URL,
   DEV: import.meta.env.DEV,
   PROD: import.meta.env.PROD,
 });

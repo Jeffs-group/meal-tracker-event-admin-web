@@ -42,10 +42,14 @@ const NotFoundPage = lazy(() => import("@/routes/NotFound"));
 import { RequirePermission } from "@/components/common/RequirePermission";
 import { ProtectedRoute } from "@/routes/ProtectedRoute";
 import { PublicLayout } from "@/components/public/PublicLayout";
+import { DomainRouteGuard } from "@/routes/DomainRouteGuard";
 
 export const routes: RouteObject[] = [
   {
-    path: ROUTES.REGISTER,
+    element: <DomainRouteGuard />,
+    children: [
+      {
+        path: ROUTES.REGISTER,
     element: (
       <PublicLayout>
         <Suspense
@@ -252,6 +256,12 @@ export const routes: RouteObject[] = [
         path: "*",
         element: <NotFoundPage />,
       },
+    ],
+  },
+  {
+    path: "*",
+    element: <NotFoundPage />,
+  },
     ],
   },
 ];

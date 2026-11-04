@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { Modal } from "@/components/ui/Modal";
 import { QrCodeSvg } from "@/components/ui/QrCodeSvg";
 import { encodeQrCode } from "@/utils/qrCodeGenerator";
+import { getPublicRegistrationBaseUrl } from "@/utils/domainRouting";
 import { Copy, Check, Download, Link as LinkIcon, Shield } from "lucide-react";
 import type { League } from "@/constants/leagues";
 
@@ -24,11 +25,11 @@ export const ShareRegistrationModal: React.FC<ShareRegistrationModalProps> = ({
   const [copied, setCopied] = useState(false);
   const qrContainerRef = useRef<HTMLDivElement>(null);
 
-  // Build full absolute URL
-  const origin = window.location.origin;
+  // Build full absolute URL using the public registration domain
+  const baseUrl = getPublicRegistrationBaseUrl();
   const registrationUrl = team
-    ? `${origin}/register?league=${encodeURIComponent(team.league)}&team=${encodeURIComponent(team.code)}`
-    : `${origin}/register`;
+    ? `${baseUrl}/register?league=${encodeURIComponent(team.league)}&team=${encodeURIComponent(team.code)}`
+    : `${baseUrl}/register`;
 
   const handleCopy = async () => {
     try {
