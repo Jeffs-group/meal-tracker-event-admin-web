@@ -123,8 +123,8 @@ export const LoginPage: React.FC = () => {
       {/* Central Card Shell matching Figma node 66-479 */}
       <div className="w-full max-w-[420px] sm:max-w-[440px] mx-auto">
         {/* Brand Logo */}
-        <div className="mb-4">
-          <JeffsGroupLogo iconClassName="h-8 w-8 text-[#C9A227]" />
+        <div className="mb-5">
+          <JeffsGroupLogo iconClassName="h-14 w-auto" />
         </div>
 
         {/* Page Header */}

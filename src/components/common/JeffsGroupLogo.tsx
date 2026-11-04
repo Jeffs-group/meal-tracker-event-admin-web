@@ -9,43 +9,19 @@ export interface JeffsGroupLogoProps {
 }
 
 /**
- * Official Jeffs Group of Companies brand emblem and typography.
+ * Official Jeffs Group of Companies brand logo.
  */
 export const JeffsGroupLogo: React.FC<JeffsGroupLogoProps> = ({
   className,
-  iconClassName = "h-8 w-8",
-  showText = true,
-  theme = "light",
+  iconClassName = "h-12 w-auto",
 }) => {
   return (
-    <div className={cn("flex items-center gap-3", className)}>
-      {/* Official Golden Crest Emblem */}
+    <div className={cn("inline-flex items-center", className)}>
       <img
-        src="/jeffs-group-emblem.png"
+        src="/jeffs-group-logo.png"
         alt="Jeffs Group of Companies"
-        className={cn("object-contain shrink-0", iconClassName)}
+        className={cn("object-contain rounded-lg", iconClassName)}
       />
-
-      {showText && (
-        <div className="flex flex-col text-left select-none">
-          <span
-            className={cn(
-              "font-extrabold text-[15px] tracking-[0.06em] leading-tight font-sans",
-              theme === "dark" ? "text-white" : "text-[#0B1220]",
-            )}
-          >
-            JEFFS GROUP
-          </span>
-          <span
-            className={cn(
-              "text-[9px] font-bold tracking-[0.24em] uppercase leading-none mt-1",
-              theme === "dark" ? "text-[#DEC067]" : "text-slate-500",
-            )}
-          >
-            OF COMPANIES
-          </span>
-        </div>
-      )}
     </div>
   );
 };
