@@ -35,8 +35,8 @@ export const LoginPage: React.FC = () => {
       setEmail(savedEmail);
     } else {
       // Default to demo admin for quick developer convenience
-      setEmail("alex.morgan@jeffsgroup.org");
-      setPassword("admin123");
+      setEmail("");
+      setPassword("");
     }
   }, []);
 
