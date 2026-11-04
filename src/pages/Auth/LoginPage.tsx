@@ -123,16 +123,16 @@ export const LoginPage: React.FC = () => {
       {/* Central Card Shell matching Figma node 66-479 */}
       <div className="w-full max-w-[420px] sm:max-w-[440px] mx-auto">
         {/* Brand Logo */}
-        <div className="mb-5">
-          <JeffsGroupLogo iconClassName="h-14 w-auto" />
+        <div className="mb-6 flex justify-center">
+          <JeffsGroupLogo iconClassName="h-16 w-auto" />
         </div>
 
         {/* Page Header */}
-        <div className="mb-6">
+        <div className="mb-6 text-center">
           <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0B1220] leading-tight">
             Welcome Back
           </h1>
-          <p className="mt-1.5 text-xs sm:text-sm text-slate-500 leading-relaxed">
+          <p className="mt-1.5 text-xs sm:text-sm text-slate-500 leading-relaxed max-w-sm mx-auto">
             Login to your Jeffs Group Event Admin Portal to manage registrations
             and team information.
           </p>
