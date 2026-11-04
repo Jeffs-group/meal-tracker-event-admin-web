@@ -28,8 +28,15 @@ export const LoginPage: React.FC = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isForgotOpen, setIsForgotOpen] = useState(false);
 
-  // Load remembered email on mount
+  // Load remembered email on mount & check error query param
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("error") === "portal_mismatch") {
+      setErrorMessage(
+        "This account cannot use the Event Admin portal. Please sign in with an Event Administrator account.",
+      );
+    }
+
     const savedEmail = localStorage.getItem("remember_admin_email");
     if (savedEmail) {
       setEmail(savedEmail);

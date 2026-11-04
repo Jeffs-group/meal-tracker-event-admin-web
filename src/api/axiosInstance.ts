@@ -72,6 +72,22 @@ axiosInstance.interceptors.response.use(
       _retry?: boolean;
     };
 
+    // If 403 because this account belongs to a different portal (e.g. Super Admin), clear session and redirect
+    const errData = error.response?.data as
+      | { code?: string; message?: string }
+      | undefined;
+    if (
+      error.response?.status === 403 &&
+      (errData?.message?.toLowerCase().includes("cannot use that portal") ||
+        (errData?.code === "FORBIDDEN" &&
+          errData?.message?.toLowerCase().includes("portal")))
+    ) {
+      useAuthStore.getState().logout();
+      window.location.href = "/login?error=portal_mismatch";
+      const apiError = ApiError.fromAxiosError(error);
+      return Promise.reject(apiError);
+    }
+
     if (error.response?.status === 401 && originalRequest) {
       const url = originalRequest.url || "";
       const isAuthEndpoint =
